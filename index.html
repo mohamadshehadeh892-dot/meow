@@ -134,25 +134,21 @@ let currentIndex = 0;
 let isOpen = false;
 
 giftBox.addEventListener('click', () => {
+    // Open the box on the first tap
     if (!isOpen) {
         giftBox.classList.add('is-open');
+        isOpen = true;
+    }
+
+    // Cycle through surprises on each click
+    if (currentIndex < surprises.length) {
         mainHeading.innerText = surprises[currentIndex].message;
         surpriseImg.src = surprises[currentIndex].img;
-        isOpen = true;
+        surpriseImg.style.opacity = '1'; // Ensures immediate visibility
+        currentIndex++; // Advances to the next item for the next tap
     } else {
-        currentIndex++;
-        
-        if (currentIndex < surprises.length) {
-            surpriseImg.style.opacity = '0';
-            setTimeout(() => {
-                surpriseImg.src = surprises[currentIndex].img;
-                mainHeading.innerText = surprises[currentIndex].message;
-                surpriseImg.style.opacity = '1';
-            }, 200);
-        } else {
-            // Instantly jumps to your separate final page
-            window.location.href = 'final.html';
-        }
+        // Redirects to final page once all pictures are finished
+        window.location.href = 'final.html';
     }
 });
 
