@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Girlfriend Day!</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #e47eaf;  
+     
+}
+
+#bg-video {
+   position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: auto;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: fit;
+    z-index: -1;
+    filter: brightness(0.9);
+}
+
+.final-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    max-width: 550px;
+    z-index: 10;
+}
+
+.final-title {
+  color: #ffffff;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(38, 13, 201, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.final-text {
+color: #ffffff;
+    font-size: 1.95rem;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: 70vh;
+    overflow-y: auto;
+    padding-right: 5px;
+    text-shadow: 2px 2px 8px rgba(38, 13, 201, 0.6);
+    
+
+}
+</style>
+</head>
+<body>
+
+<video autoplay loop muted playsinline id="bg-video">
+    <source src="media/videoplayback.mp4" type="video/mp4">
+</video>
+
+<div class="final-screen">
+    <h1 class="final-title">HAPPY "could be" GIRLFRIEND DAY</h1>
+    <div class="final-text">
+        <p>today is august 1st, world's girlfriend day. even tho u ain't mine yet, i know nobody showed up for u today. so i built this just to remind u that u are worth every single effort and because seeing u smile is worth it all..</p><nl>
+        <p>a little reminder of how amazing you are. You carry so much grace, and anyone who gets to be a part of your life is genuinely lucky. I just want to always be someone who adds to your happiness and makes you smile. You mean a whole lot to me.</p><nl>
+        <p>I admire you so much for the person you are and the way you care about your mom and your siblings. You deserve to be surrounded by people who never take you for granted, and I just wanted to remind you how incredibly loved and appreciated you are by me girl 🙃🤍</p>
+    </div>
+</div>
+
+</body>
+</html>

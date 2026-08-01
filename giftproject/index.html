@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A SPECIAL SURPRISE</title>
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Comic Sans MS', 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #e47eaf; 
+}
+
+#bg-video {
+   position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: auto;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    object-fit: fit;
+    z-index: -1;
+    filter: brightness(0.9);
+}
+
+.app-container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 180px;
+    z-index: 10;
+}
+
+.header-title {
+    color: #ffffff;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 8px rgba(38, 13, 201, 0.6);
+    transition: transform 0.3s ease;
+}
+
+.gift-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+    gap: 60px;
+    cursor: pointer;
+}
+
+.gift-wrapper img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#surprise-img {
+    bottom: 0;
+    left: 0;
+    transform: translateY(40px) scale(0.4);
+    opacity: 0;
+    z-index: 1;
+}
+
+.box-front {
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+}
+
+#box-lid {
+    top: 0;
+    left: 0;
+    z-index: 3;
+    transform-origin: top left;
+}
+
+.gift-wrapper.is-open #box-lid {
+    transform: translateY(-10px) rotate(-25deg);
+    opacity: 0;
+}
+
+.gift-wrapper.is-open #surprise-img {
+    transform: translateY(-190px) scale(1.0);
+    opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<video autoplay loop muted playsinline id="bg-video">
+    <source src="media/videoplayback.mp4" type="video/mp4">
+</video>
+
+<div class="app-container">
+    <h1 class="header-title" id="main-heading">GUESS WHAT IS IN LOLO🎁(keep tapping till u see the message)</h1>
+
+    <div class="gift-wrapper" id="gift-box">
+        <img src="media/Item1.png" id="surprise-img" alt="Surprise Item">
+        <img src="media/box-front.png" class="box-front" alt="Box Body">
+        <img src="media/box-lid.png" id="box-lid" alt="Box Lid">
+    </div>
+</div>
+
+<script>
+const giftBox = document.getElementById('gift-box');
+const mainHeading = document.getElementById('main-heading');
+const surpriseImg = document.getElementById('surprise-img');
+
+const surprises = [
+    { img: 'media/item1.png', message: 'Wait... is that a fucking teddy bear?! 🧸✨' },
+    { img: 'media/item2.png', message: 'AYEEEEE a cute little bird popped out! 🦜🔥' },
+    { img: 'media/item3.png', message: 'Bro look at this tiny blue bear omg 💙😭' },
+    { img: 'media/item4.png', message: 'WHAT A FLUFFY DUCK LETS GOOOO 🐥💪' },
+    { img: 'media/item5.png', message: 'AHHHHHHH YOU JUST UNLOCKED A GIANT PILE OF HUGS!! AHHHH 😛' }
+];
+
+
+let currentIndex = 0;
+let isOpen = false;
+
+giftBox.addEventListener('click', () => {
+    if (!isOpen) {
+        giftBox.classList.add('is-open');
+        mainHeading.innerText = surprises[currentIndex].message;
+        surpriseImg.src = surprises[currentIndex].img;
+        isOpen = true;
+    } else {
+        currentIndex++;
+        
+        if (currentIndex < surprises.length) {
+            surpriseImg.style.opacity = '0';
+            setTimeout(() => {
+                surpriseImg.src = surprises[currentIndex].img;
+                mainHeading.innerText = surprises[currentIndex].message;
+                surpriseImg.style.opacity = '1';
+            }, 200);
+        } else {
+            // Instantly jumps to your separate final page
+            window.location.href = 'final.html';
+        }
+    }
+});
+
+</script>
+</body>
+</html>
